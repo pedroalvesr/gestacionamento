@@ -19,7 +19,7 @@
         <li class="header">Menu</li>
   
         <li class="active">
-          <a routerLink="/dashboard">
+          <a routerLink="/paginas/dashboard">
             <i class="ion ion-speedometer"></i>
             <span>Dashboard</span>
           </a>
@@ -34,33 +34,28 @@
   
         <li class="treeview">
           <a href="#">
-            <i class="ion ion-ios-alarm-outline"></i>
-            <span>Histórico Geral</span>
+            <i class="ion ion-android-create"></i>
+            <span>Cadastrar</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li>
-              <a routerLink="/historico">
-                <i class="fa fa-circle-o"></i>Histórico de Horas</a>
+              <a routerLink="/paginas/patio">
+                <i class="fa fa-circle-o"></i>Pátio</a>
+            </li>
+            <li>
+              <a routerLink="/paginas/veiculo">
+                <i class="fa fa-circle-o"></i>Veículo</a>
             </li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="ion ion-android-options"></i>
-            <span>Configurações</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <li>
+          <a routerLink="/paginas/carros-estacionados">
+            <i class="ion ion-android-car"></i>
+            <span>Carros Estacionados</span>
           </a>
-          <ul class="treeview-menu">
-            <li>
-              <a routerLink="/editar/perfil">
-                <i class="fa fa-circle-o"></i> Perfil Usuário</a>
-            </li>
-          </ul>
         </li>
       </ul>
     </section>
