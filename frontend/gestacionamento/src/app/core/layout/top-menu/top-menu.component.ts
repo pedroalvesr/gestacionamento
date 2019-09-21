@@ -9,7 +9,7 @@ export class TopMenuComponent implements OnInit {
 
   pessoa: any = {
     nome: 'Pedro Ribeiro',
-    cargo: 'Analista de Desenvolvimento'
+    cargo: 'Gerente'
   };
   imagem: any;
   username: any;
