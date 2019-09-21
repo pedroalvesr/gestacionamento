@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './core/layout/top-menu/top-menu.component';
 import { MenuComponent } from './core/layout/menu/menu.component';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -20,7 +24,7 @@ import { MenuComponent } from './core/layout/menu/menu.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PatioService } from './../../core/services/patio.service';
+
 @Component({
   selector: 'gestac-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  vagas = {};
+
+  constructor(private patioService: PatioService) { }
 
   ngOnInit() {
+    this.patioService.buscarVagas().subscribe((totalVagas) => {
+      this.vagas = totalVagas;
+    });
+
   }
 
 }

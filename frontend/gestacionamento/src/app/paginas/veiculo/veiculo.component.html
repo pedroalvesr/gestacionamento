@@ -23,7 +23,7 @@
                     <!-- <div class="box-header with-border">
                         <h3 class="box-title">Cadastro de Veículos</h3>
                     </div> -->
-                    <form class="form-horizontal">
+                    <div class="form-horizontal">
                         <div class="box-body">
                             <div class="col-md-offset-1">
                                 <h4>Cadastro de Veículos</h4>
@@ -32,21 +32,21 @@
                                 <label for="placa" class="col-sm-2 control-label">Placa</label>
 
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="placa">
+                                    <input type="text" class="form-control" id="placa" [(ngModel)]="veiculo.placa">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="modelo" class="col-sm-2 control-label">Modelo</label>
 
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="modelo">
+                                    <input type="text" class="form-control" id="modelo" [(ngModel)]="veiculo.modelo">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cor" class="col-sm-2 control-label">Cor</label>
 
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="cor">
+                                    <input type="text" class="form-control" id="cor" [(ngModel)]="veiculo.cor">
                                 </div>
                             </div>
                             <div class="col-md-offset-1">
@@ -56,21 +56,21 @@
                                 <label for="nome" class="col-sm-2 control-label">Nome</label>
 
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="nome">
+                                    <input type="text" class="form-control" id="nome" [(ngModel)]="veiculo.cliente.nome">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cpf" class="col-sm-2 control-label">CPF</label>
 
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="cpf">
+                                    <input type="text" class="form-control" id="cpf" [ngModel]="veiculo.cliente.cpf | cpf" (ngModelChange)="veiculo.cliente.cpf = $event" maxlength="11">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="telefone" class="col-sm-2 control-label">Telefone</label>
 
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="telefone">
+                                    <input type="text" class="form-control" id="telefone" [ngModel]="veiculo.cliente.telefone | telefone" (ngModelChange)="veiculo.cliente.telefone = $event"  maxlength="11">
                                 </div>
                             </div>
 
@@ -80,22 +80,22 @@
                             <div class="form-group">
                                 <label for="telefone" class="col-sm-2 control-label">Estacionamento</label>
                                 <div class="col-sm-4">
-                                    <select class="form-control">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
+                                    <select class="form-control" [(ngModel)]="veiculo.patio">
+                                        <option [ngValue]="patio" *ngFor="let patio of patios"> {{ patio.descricao }} </option>
                                     </select>
+
+                                    <!-- <select  class="form-control" [(ngModel)]="veiculo.patio" *ngFor="item as item.descricao for item of patios" >
+
+                                    </select> -->
                                 </div>
                             </div>
 
                         </div>
                         <div class="box-footer">
                             <button type="button"
-                                class="btn btn-primary btn-sm col-md-2 col-md-offset-2">Salvar</button>
+                                class="btn btn-primary btn-sm col-md-2 col-md-offset-2" (click)="salvarVeiculo()" [disabled]="!veiculo.patio.id">Salvar</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
