@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
@@ -9,9 +9,10 @@ import { Constants } from './../util/constants';
   providedIn: 'root'
 })
 export class LoginService {
-  
+
   HOME_API: string = Constants.HOME_API;
   usuarioAutenticado: boolean = false;
+  atualizacao = new EventEmitter<any>();
 
   constructor(private http: HttpClient,
     private route: Router) { }
@@ -20,7 +21,7 @@ export class LoginService {
     return this.http.post(`${this.HOME_API}/login`, usuario).subscribe((resp: boolean) => {
       console.log(resp);
       this.usuarioAutenticado = resp;
-      this.route.navigate(['/pessoas/dashboard']);
+      this.route.navigate(['/paginas/dashboard']);
     });
   }
 
@@ -28,19 +29,20 @@ export class LoginService {
     return this.http.post(`${this.HOME_API}/login/novo`, usuario).pipe(take(1));
   }
 
-  
+
   public loadAcessToken() {
     if (this.usuarioAutenticado == true) {
-        return true;
-      }
-      return false;
+      this.atualizacao.emit(this.usuarioAutenticado);
+      return true;
+    }
+    return false;
   }
 
   public isLogado() {
     return this.loadAcessToken();
   }
 
-  public logout(){
+  public logout() {
     this.usuarioAutenticado = false;
     this.route.navigate(["/login"]);
   }

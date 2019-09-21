@@ -1,10 +1,10 @@
-<div class="wrapper">
-  <div>
+<div>
+  <div *ngIf="islogado">
     <gestac-top-menu></gestac-top-menu>
     <gestac-menu></gestac-menu>
   </div>
 
-  <div>
+  <div id="content" class="content">
     <router-outlet></router-outlet>
   </div>
 </div>

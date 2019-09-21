@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { TopMenuComponent } from './core/layout/top-menu/top-menu.component';
 import { MenuComponent } from './core/layout/menu/menu.component';
 import { LoginComponent } from './paginas/login/login.component';
+import { CadastroComponent } from './paginas/cadastro/cadastro.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -18,7 +19,8 @@ registerLocaleData(localePt, 'pt');
     AppComponent,
     TopMenuComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
