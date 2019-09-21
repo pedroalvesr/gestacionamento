@@ -55,7 +55,7 @@ public class UsuarioController {
 
          senha = new BigInteger(1, algorithm.digest()).toString(16);
          
-         if (Objects.isNull(u.getEmail()) && u.getSenha().equals(senha)) {
+         if (u.getEmail() != null && u.getSenha().equals(senha)) {
 
             return true;
          }
