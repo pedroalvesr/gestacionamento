@@ -10,11 +10,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.security.crypto.bcrypt.BCrypt;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,12 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping("/usuario")
 public class UsuarioController {
 
    @Autowired
    private UsuarioDAO usuarioDAO;
 
-   @RequestMapping(value = "/novo/usuario", method = RequestMethod.POST)
+   @PostMapping("/novo")
    public Usuario salvar(@RequestBody Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
       String senha = usuario.getSenha();
@@ -42,7 +43,7 @@ public class UsuarioController {
       return usuarioDAO.save(usuario);
    }
 
-   @RequestMapping(value = "/login", method = RequestMethod.POST)
+   @PostMapping("/login")
    public boolean login(@RequestBody Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
       String senha = usuario.getSenha();

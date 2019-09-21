@@ -10,9 +10,9 @@ import io.ribeiro.gestacionamento.repository.VeiculoDAO;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping("/veiculo")
 public class VeiculoController {
 
    @Autowired
@@ -32,8 +33,8 @@ public class VeiculoController {
    @Autowired
    private EstacionamentoDAO estacionamentoDAO;
 
-   @RequestMapping(value = "/novo/veiculo", method = RequestMethod.POST)
-   public Veiculo salvar(@RequestBody Veiculo veiculo) {
+   @PostMapping
+   public Veiculo inserir(@RequestBody Veiculo veiculo) {
 
       salvarCliente(veiculo.getCliente());
 

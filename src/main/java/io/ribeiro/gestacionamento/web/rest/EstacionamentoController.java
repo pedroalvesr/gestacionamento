@@ -11,9 +11,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,17 +25,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping("/estacionamento")
 public class EstacionamentoController {
 
    @Autowired
    private EstacionamentoDAO estacionamentoDAO;
 
-   @RequestMapping(value = "/estacionamento", method = RequestMethod.POST)
-   public Estacionamento salvar(@RequestBody Estacionamento estacionamento) throws ParseException {
+   @PostMapping
+   @ResponseStatus(HttpStatus.CREATED)
+   public Estacionamento inserir(@RequestBody Estacionamento estacionamento) throws ParseException {
 
       Date saida = new Date();
       Date entrada = new Date();
-      ;
 
       estacionamento.setSaida(saida);
       if (estacionamento.getSaida() != null) {
@@ -55,11 +59,11 @@ public class EstacionamentoController {
       }
    }
 
-   @RequestMapping(value = "/listar/veiculos", method = RequestMethod.GET)
-   public List<Estacionamento> salvar() {
-      List<Estacionamento> listaEstacionamento = new ArrayList<>();
-      estacionamentoDAO.findAll().forEach(listaEstacionamento::add);
-      return listaEstacionamento;
+   @GetMapping
+   public List<Estacionamento> listar() {
+      List<Estacionamento> estacionamento = new ArrayList<>();
+      estacionamentoDAO.findAll().forEach(estacionamento::add);
+      return estacionamento;
    }
 
 }
