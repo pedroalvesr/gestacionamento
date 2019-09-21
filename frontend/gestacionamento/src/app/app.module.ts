@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './core/layout/top-menu/top-menu.component';
 import { MenuComponent } from './core/layout/menu/menu.component';
+import { LoginComponent } from './paginas/login/login.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -16,7 +17,8 @@ registerLocaleData(localePt, 'pt');
   declarations: [
     AppComponent,
     TopMenuComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

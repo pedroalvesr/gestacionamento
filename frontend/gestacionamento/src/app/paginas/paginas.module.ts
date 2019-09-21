@@ -12,7 +12,6 @@ import { EstacionamentoComponent } from './estacionamento/estacionamento.compone
 import { TelefonePipe } from '../core/pipe/telefone.pipe';
 import { CpfPipe } from '../core/pipe/cpf.pipe';
 
-
 @NgModule({
   declarations: [
     PaginasComponent,

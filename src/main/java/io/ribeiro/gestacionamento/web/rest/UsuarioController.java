@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/login")
 public class UsuarioController {
 
    @Autowired
@@ -43,23 +43,33 @@ public class UsuarioController {
       return usuarioDAO.save(usuario);
    }
 
-   @PostMapping("/login")
+   @PostMapping
    public boolean login(@RequestBody Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
       String senha = usuario.getSenha();
+      try {
+         Usuario u = usuarioDAO.findByEmail(usuario.getEmail());
+         
+         MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+         algorithm.update(senha.getBytes("UTF-8"));
 
-      Usuario u = usuarioDAO.findByEmail(usuario.getEmail());
+         senha = new BigInteger(1, algorithm.digest()).toString(16);
+         
+         if (Objects.isNull(u.getEmail()) && u.getSenha().equals(senha)) {
 
-      MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-      algorithm.update(senha.getBytes("UTF-8"));
+            return true;
+         }
+         return false;
 
-      senha = new BigInteger(1, algorithm.digest()).toString(16);
-
-      if (Objects.isNull(u.getEmail()) && u.getSenha().equals(senha)) {
-
-         return true;
+      } catch (Exception e) {
+         // TODO: handle exception
+         return false;
       }
-      return false;
+
+     
+
+      
+      
    }
 
 }
