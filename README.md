@@ -151,7 +151,8 @@ Após o cadastro do pátio, você pode castrar um veículo, um cliente e vincula
 
 No menu carros estacionados, serão listados todos os carros cadastrados que estão ou já ocuparam uma vaga. Para encerrar o tempo do veiculo no estacionamento, basta clicar no botão **Gerar custo do tempo estacionado** **($)**, assim será gerado os minutos estacionados e o custo que o cliente deve pagar.
 
-![image](https://user-images.githubusercontent.com/22817118/65386214-d4bdcd00-dd0e-11e9-9749-e56db7d6bdff.png)
+![image](https://user-images.githubusercontent.com/22817118/65386268-dcca3c80-dd0f-11e9-978a-e40730d93732.png)
+
 
 
 
