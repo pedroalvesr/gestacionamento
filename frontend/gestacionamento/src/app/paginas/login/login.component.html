@@ -1,27 +1,41 @@
 <div class="login-box">
-    <div class="login-box-body">
-      <p class="login-box-msg">Faça login para iniciar sua sessão</p>
-  
-      <div class="form-login">
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control" [(ngModel)]="usuario.email" placeholder="Email">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+  <div class="login-box-body">
+    <p class="login-box-msg">Faça login para iniciar sua sessão</p>
+
+    <div class="form-login">
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" [(ngModel)]="usuario.email" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" [(ngModel)]="usuario.senha" placeholder="Senha">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="login()">ENTRAR</button>
         </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" [(ngModel)]="usuario.senha" placeholder="Senha">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="login()">ENTRAR</button>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-6">
-            <a routerLink="/cadastrar" class="text-center">Não sou cadastrado</a>
-          </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-6">
+          <a routerLink="/cadastrar" class="text-center">Não sou cadastrado</a>
         </div>
       </div>
     </div>
+    <div *ngIf="msgErro" class="alert alert-danger" role="alert"
+      style="top: 60px; position: fixed; height: auto; margin: 0px; padding: 0px; list-style-type: none; z-index: 10000000;">
+      <li
+        style="overflow: hidden; background: rgb(182, 70, 69); border-radius: 3px; border: 1px solid rgb(182, 70, 69); box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px; color: rgb(255, 255, 255); opacity: 1; width: 310px; cursor: pointer;">
+        <div class="noty_bar noty_type_error" id="noty_1428400014848141800">
+          <div class="noty_message"
+            style="font-size: 11px; line-height: 14px; text-align: left; padding: 8px 10px 9px; width: auto; position: relative;">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span
+                class="sr-only">Close</span></button>
+            <strong>xiiiiiii!</strong> usuário ou a senha incorretos, tente novamente!.
+          </div>
+        </div>
+      </li>
+    </div>
   </div>
+</div>

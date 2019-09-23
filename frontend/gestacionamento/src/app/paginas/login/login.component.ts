@@ -11,14 +11,22 @@ import { LoginService } from './../../core/services/login.service';
 export class LoginComponent implements OnInit {
 
   usuario: Usuario;
+  msgErro = false;
 
   constructor(private loginService: LoginService) {
     this.usuario = new Usuario();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.loginService.islogadoEmitt.subscribe(() => {
+      this.msgErro = true;
+      setTimeout(() => {
+        this.msgErro = false;
+      }, 6000);
+    });
+  }
 
-  public login() { 
+  public login() {
     this.loginService.login(this.usuario);
   }
 

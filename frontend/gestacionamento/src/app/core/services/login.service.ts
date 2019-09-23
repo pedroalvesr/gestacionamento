@@ -13,6 +13,7 @@ export class LoginService {
   HOME_API: string = Constants.HOME_API;
   usuarioAutenticado: boolean = false;
   atualizacao = new EventEmitter<any>();
+  islogadoEmitt = new EventEmitter();
 
   constructor(private http: HttpClient,
     private route: Router) { }
@@ -35,6 +36,7 @@ export class LoginService {
       this.atualizacao.emit(this.usuarioAutenticado);
       return true;
     }
+    this.islogadoEmitt.emit(this.usuarioAutenticado);
     return false;
   }
 
