@@ -90,7 +90,7 @@ A PoC de um sistema para gerenciar estacionamentos foi desenvolvida na **IDE Ecl
 
 crie um fork ou baixe manualmente o projeto clicando [aqui](https://github.com/pedroalvesr/gestacionamento.git).
 
-### Execultando o projeto
+### Executando o projeto
 
 ### front-end
 
